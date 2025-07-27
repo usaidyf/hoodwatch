@@ -5,6 +5,8 @@ import clsx from 'clsx';
 import { ArrowRightIcon, AtSignIcon, CircleAlert, KeyRound } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import React, { useActionState } from 'react'
+import { BasicLoaderInline } from '../reusables/basic-loader';
+import Link from 'next/link';
 
 export default function LoginForm() {
    const params = useSearchParams();
@@ -19,10 +21,11 @@ export default function LoginForm() {
    const iconClassName = "pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 left-3"
 
    return (
-      <form action={formAction} className="space-y-3 flex-1 rounded-2xl bg-white border border-gray-300 px-6 py-8">
-         <h1 className={`mb-3 text-2xl`}>
+      <form action={formAction} className="space-y-3 flex-1 rounded-2xl bg-white border border-gray-300 px-6 pb-8 pt-6">
+         <h1 className={`mb-1 text-2xl`}>
             Login to Your Account
          </h1>
+
          <div className="w-full text-sm">
             <div>
                <label
@@ -81,8 +84,11 @@ export default function LoginForm() {
          </div>
          <button disabled={pending} className="mt- w-full bg-primary hover:bg-primary-hover active:bg-primary-hover rounded-lg text-white cursor-pointer transition flex items-center justify-center px-4 py-2 disabled:bg-primary/40 disabled:cursor-not-allowed">
             Log in
-            <ArrowRightIcon className="ml-auto h-5 w-5" />
+            {pending ? <BasicLoaderInline className='ml-auto w-5 text-white' /> : <ArrowRightIcon className="ml-auto w-5" />}
          </button>
-      </form >
+         <Link href='/signup' className='text-sm text-center text-primary hover:underline block'>
+            Create an account?
+         </Link>
+      </form>
    )
 }
