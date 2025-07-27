@@ -1,5 +1,13 @@
 import { z } from 'zod';
 
+export const UserSchema = z.object({
+   id: z.uuid(),
+   full_name: z.string().min(3, { error: "Full name can't have less than 3 characters" }),
+   email: z.email(),
+   neighborhood_id: z.uuid().nullable(),
+   created_at: z.string(),
+})
+
 export const IssueSchema = z.object({
    id: z.uuid(),
    title: z.string().min(3, { error: "At least 3 characters required" }).max(100, { error: "Title can't have more than 100 characters" }),
@@ -23,6 +31,11 @@ export const NeighborhoodSchema = z.object({
    created_at: z.string(),
 })
 
+
+export const UpdateProfileSchema = UserSchema.omit({ email: true, created_at: true })
+export const UpdatePassword = UserSchema.omit({ created_at: true }).extend({
+   password: z.string().min(8, { error: "At least 8 characters required" })
+})
 
 export const IssueCreate = IssueSchema.omit({ id: true, updated_at: true, created_at: true, user_id: true }).extend({
    user_id: z.uuid(),

@@ -1,10 +1,11 @@
 import React from 'react'
 import Form from './form'
+import { formHeading } from '@/app/lib/classnames'
 
 export default function CreateIssuePage() {
    return (
       <div className='border border-gray-200 rounded-lg p-4 md:p-7'>
-         <h2 className='text-4xl font-bold mb-4'>Create Issue</h2>
+         <h3 className={formHeading}>Create Issue</h3>
          <Form />
       </div>
    )
