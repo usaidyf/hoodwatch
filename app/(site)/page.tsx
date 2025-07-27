@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import React from 'react'
 import { fetchIssuesByNeighborhood, fetchNeighborhoodById, findUserByEmail } from '@/app/lib/data';
-import IssuesFeed from './issues-feed';
+import IssuesFeed from '@/app/components/sections/issues-feed';
 import DiscoverNeighborhoodsFeed from './discover-neighborhoods-feed';
 
 export default async function Home() {
