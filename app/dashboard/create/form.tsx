@@ -4,11 +4,12 @@ import Button from '@/app/components/reusables/button';
 import { FormLabel, FormInput, FormTextArea, FormSelect } from '@/app/components/reusables/form-components';
 import { createIssue } from '@/app/lib/actions';
 import { Field } from '@headlessui/react';
-import { ArrowLeftIcon, ChevronLeftIcon } from 'lucide-react';
+import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { useState, useTransition } from 'react'
 import { toast } from 'sonner';
+import z from 'zod';
 
 export default function CreateIssueForm() {
    const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
@@ -48,14 +49,6 @@ export default function CreateIssueForm() {
                <option value="resolved">Resolved</option>
             </FormSelect>
          </Field>
-         <Field>
-            <FormLabel>Neighborhood</FormLabel>
-            <FormSelect name='neighborhood_id' errorMessage={fieldErrors?.neighborhood_id && String(fieldErrors?.neighborhood_id)}>
-               {/* TODO: Use dynamic values */}
-               <option value="aa8ac40f-3b80-487d-a202-548c755872c9">Uptown</option>
-            </FormSelect>
-         </Field>
-
 
          <div className='flex items-center gap-3 justify-between mt-8'>
             <Button as={Link} href='/' className='bg-gray-100 hover:bg-gray-200 text-gray-800'>

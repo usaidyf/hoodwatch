@@ -11,7 +11,7 @@ export const UserSchema = z.object({
 export const IssueSchema = z.object({
    id: z.uuid(),
    title: z.string().min(3, { error: "At least 3 characters required" }).max(100, { error: "Title can't have more than 100 characters" }),
-   description: z.string().max(1000, { error: "Description can't have more than 1000 characters" }),
+   description: z.string().max(10000, { error: "Description can't have more than 10000 characters" }),
    status: z.enum(['open', 'resolved', 'closed']),
    neighborhood_id: z.uuid(),
    user_id: z.uuid().nullable(),

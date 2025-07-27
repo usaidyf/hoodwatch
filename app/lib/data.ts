@@ -73,10 +73,12 @@ export async function fetchIssuesByNeighborhood(neighborhood_id: string): Promis
    try {
       const issues = await sql<IssueType[]>`
          SELECT
+            "id",
             "title",
             "description",
             "status",
-            "updated_at"
+            "updated_at",
+            "created_at"
          FROM issues WHERE "neighborhood_id" = ${neighborhood_id};
       `;
 

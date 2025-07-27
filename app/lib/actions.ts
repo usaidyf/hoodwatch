@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 import { IssueCreate, UpdateProfileSchema } from "./schema";
 import { sql } from "./db";
 import { findUserByEmail } from "./data";
-import z from "zod";
 
 /* DB Interactions ────────────── */
 
@@ -22,7 +21,7 @@ export async function createIssue(formData: FormData): Promise<{ ok: boolean, me
       title: formData.get('title'),
       description: formData.get('description'),
       status: formData.get('status') || 'open',
-      neighborhood_id: formData.get('neighborhood_id') || null,
+      neighborhood_id: user?.neighborhood_id || null,
       user_id: user?.id || null
    })
 
