@@ -4,7 +4,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
    return (
       <div>
          <h1>Dashboard</h1>
-         {children}
+         <div className="container mx-auto p-3 md:p-5 lg:p-8">
+            {children}
+         </div>
       </div>
    )
 }

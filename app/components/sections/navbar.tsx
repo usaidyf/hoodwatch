@@ -12,12 +12,12 @@ export default function Navbar() {
    const [showMenuDropdown, setShowMenuDropdown] = useState(false);
 
    return (
-      <nav className={`bg-white border-b border-gray-300 w-full px-4 md:px-7 py-2 md:py-3 sticky top-0 z-40`}>
+      <nav className={`bg-white border-b border-gray-300 w-full px-4 md:px-6 py-0.5 md:py-1.5 sticky top-0 z-40`}>
          <div className="flex items-center justify-between flex-wrap gap-3 md:gap-4 lg:gap-8 relative">
 
             {/* Logo */}
             <Link href="/" className='bordr'>
-               <Image className="w-16 sm:w-18 md:w-16" src='/logo.png' alt="logo" width={64} height={64} />
+               <Image className="w-12 sm:w-14 md:w-16" src='/logo.png' alt="logo" width={64} height={64} />
             </Link>
 
             {/* Nav Links */}
@@ -30,7 +30,7 @@ export default function Navbar() {
             </ul>
 
             {/* Right Side Controls */}
-            <div className="flex items-center gap-1 md:gap-1.5 relative">
+            <div className="flex items-center gap-0.5 md:gap-1.5 relative">
                <button className="w-9 h-9 rounded-md cursor-pointer flex items-center justify-center hover:bg-gray-200 transition">
                   <SearchIcon
                      className="w-4.5 sm:w-5 md:w-5.5 text-primary"
@@ -49,7 +49,7 @@ export default function Navbar() {
                </Link>
 
                {/* Mobile Menu Icon */}
-               <div className="md:hidden">
+               <div className="md:hidden ml-1">
                   <Menu
                      className="w-6 text-primary cursor-pointer"
                      onClick={() => setShowMenuDropdown((prev) => !prev)}
@@ -69,7 +69,7 @@ export default function Navbar() {
             >
                <div className="flex items-center justify-between w-full p-4">
                   <div className="flex items-center gap-2">
-                     <Image src='/logo-wide.svg' alt="logo" className="w-20 sm:w-24 md:w-28" width={160} height={53} />
+                     <Image src='/logo.png' alt="logo" className="w-14 sm:w-16" width={160} height={53} />
                   </div>
                   <button
                      className="w-9 h-9 cursor-pointer flex items-center justify-center transition bg-gray-100 rounded-lg"
