@@ -6,7 +6,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <div>
       <Navbar />
-      {children}
+      <div className="container mx-auto p-3 md:p-5 lg:p-8">
+        {children}
+      </div>
       <Footer />
     </div>
   )
