@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hood Watch - Get to know your neighborhood
 
-## Getting Started
+#### A platform to explore and connect with your local community and contribute to your neighborhood's safety and betterment. 
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### The easiest way to try out this project is by visitng https://hood-watch.netlify.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+But if you still want to see if the project can be set up within 5 minutes, follow these steps:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tools Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. This project requires Node.js and Git (of course) to be installed on your computer
 
-## Learn More
+2. For the package manager and running the dev server etc., I'd personally recommend `pnpm` which you could install with the following command:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   npm install -g pnpm@latest-10
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone this repository onto your local machine:
 
-## Deploy on Vercel
+   ```
+   git clone https://github.com/usaidyf/hoodwatch
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. `cd` into your project and run `pnpm install`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Next, you'd need a random string to be set as the `AUTH_SECRET`. You could generate one using:
+
+   ```
+   openssl rand -base64 32
+   ```
+
+4. Create a `.env` file at the root of the repo having the following three variables:
+
+   ```
+   POSTGRES_URL="your_postgres_connection_string"
+   AUTH_SECRET="your_auth_secret_here"
+   NEXT_PUBLIC_BASE_URL="the_root_url_of_the_dev_server"
+   ```
+
+5. Run `pnpm dev` or `pnpm run dev` (first one saves some time though) in your terminal to run the project:
+
+You should see the website running if you visit `http://localhost:3000`. That's it!
