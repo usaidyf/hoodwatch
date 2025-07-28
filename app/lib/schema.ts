@@ -31,7 +31,9 @@ export const NeighborhoodSchema = z.object({
    created_at: z.string(),
 })
 
-
+export const UserCreate = UserSchema.omit({ id: true, neighborhood_id: true, created_at: true }).extend({
+   password: z.string().min(8, { error: "At least 8 characters required" })
+})
 export const UpdateProfileSchema = UserSchema.omit({ email: true, created_at: true })
 export const UpdatePassword = UserSchema.omit({ created_at: true }).extend({
    password: z.string().min(8, { error: "At least 8 characters required" })

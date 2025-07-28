@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import React, { useActionState } from 'react'
 import { BasicLoaderInline } from '../reusables/basic-loader';
 import Link from 'next/link';
+import { authFormIcon, authFormInput } from '@/app/lib/classnames';
 
 export default function LoginForm() {
    const params = useSearchParams();
@@ -17,12 +18,10 @@ export default function LoginForm() {
       undefined,
    );
 
-   const inputClassName = "peer block w-full rounded-md border border-gray-300 py-2 placeholder:text-gray-500 pl-10 pr-3";
-   const iconClassName = "pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 left-3"
 
    return (
       <form action={formAction} className="space-y-3 flex-1 rounded-2xl bg-white border border-gray-300 px-6 pb-8 pt-6">
-         <h1 className={`mb-1 text-2xl`}>
+         <h1 className={`text-2xl`}>
             Login to Your Account
          </h1>
 
@@ -36,7 +35,7 @@ export default function LoginForm() {
                </label>
                <div className="relative">
                   <input
-                     className={inputClassName}
+                     className={authFormInput}
                      id="email"
                      type="email"
                      name="email"
@@ -44,7 +43,7 @@ export default function LoginForm() {
                      required
                      defaultValue={state?.formData?.email || ""}
                   />
-                  <AtSignIcon className={iconClassName} />
+                  <AtSignIcon className={authFormIcon} />
                </div>
             </div>
             <div className="mt-3">
@@ -56,16 +55,16 @@ export default function LoginForm() {
                </label>
                <div className="relative">
                   <input
-                     className={inputClassName}
+                     className={authFormInput}
                      id="password"
                      type="password"
                      name="password"
                      placeholder={"Your password here"}
                      required
                      defaultValue={state?.formData?.password || ""}
-                     minLength={6}
+                     minLength={8}
                   />
-                  <KeyRound className={iconClassName} />
+                  <KeyRound className={authFormIcon} />
                </div>
             </div>
          </div>
