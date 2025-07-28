@@ -42,6 +42,13 @@ But if you still want to see if the project can be set up within 5 minutes, foll
    NEXT_PUBLIC_BASE_URL="the_root_url_of_the_dev_server"
    ```
 
-5. Run `pnpm dev` or `pnpm run dev` (first one saves some time though) in your terminal to run the project:
+5. Next, migrate and seed the database using the data in `scripts/seed-data.ts` by using the command:
+
+   ```
+   pnpm db:migrate
+   ```
+
+
+6. Run `pnpm dev` or `pnpm run dev` (first one saves some time though) in your terminal to run the project:
 
 You should see the website running if you visit `http://localhost:3000`. That's it!
