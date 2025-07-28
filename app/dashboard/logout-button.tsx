@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 export default function LogoutButton() {
    return (
       <button
+         className='px-2.5 text-sm bg-primary-hover transition hover:text-red-100 rounded-md cursor-pointer py-1.5'
          onClick={async (e) => {
             e.preventDefault();
             try {

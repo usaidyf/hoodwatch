@@ -17,7 +17,7 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link href="/" className='bordr'>
-               <Image className="w-12 sm:w-14 md:w-16" src='/logo.png' alt="logo" width={64} height={64} />
+               <Image className="w-12 sm:w-14 md:w-16" src='/logo.png' alt="logo" width={1080} height={1080} />
             </Link>
 
             {/* Nav Links */}
