@@ -11,7 +11,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                <Image alt='logo' className='w-9 md:w-10' src='/logo-neutral.png' width={1080} height={1080} />
                <h1 className='text-xl font-bold mt-1'>Dashboard</h1>
             </Link>
-            <LogoutButton />
+            <div className="flex items-center gap-1">
+               <Link href='/dashboard/create' className='px-2.5 text-sm bg-primary-hover transition hover:text-red-100 rounded-md cursor-pointer py-1.5'>
+                  Add Issue
+               </Link>
+               <LogoutButton />
+            </div>
          </div>
          <div className="container mx-auto p-3 md:p-5 lg:p-8">
             {children}
