@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react'
-import { Menu, SearchIcon, User2Icon, XIcon } from 'lucide-react'
+import { GithubIcon, Menu, SearchIcon, User2Icon, XIcon } from 'lucide-react'
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
@@ -23,22 +23,22 @@ export default function Navbar() {
             {/* Nav Links */}
             <ul className="hidden md:flex gap-4 flex-grow">
                <li className="text-gray-600 text-lg hover:text-primary cursor-pointer">
-                  <Link href={'/about'}>
+                  {/* <Link href={'/about'}>
                      About
-                  </Link>
+                  </Link> */}
                </li>
             </ul>
 
             {/* Right Side Controls */}
             <div className="flex items-center gap-0.5 md:gap-1.5 relative">
-               <button className="w-9 h-9 rounded-md cursor-pointer flex items-center justify-center hover:bg-gray-200 transition">
+               {/* <button className="w-9 h-9 rounded-md cursor-pointer flex items-center justify-center hover:bg-gray-200 transition">
                   <SearchIcon
                      className="w-4.5 sm:w-5 md:w-5.5 text-primary"
                      onClick={() => {
                         setIsSearchOpen(true);
                      }}
                   />
-               </button>
+               </button> */}
                <Link href='/login' className="w-9 h-9 rounded-md cursor-pointer flex items-center justify-center hover:bg-gray-200 transition">
                   <User2Icon
                      className="w-4.5 sm:w-5 md:w-5.5 text-primary"
@@ -47,6 +47,14 @@ export default function Navbar() {
                      }}
                   />
                </Link>
+               <a target='_blank' href='https://github.com/usaidyf/hoodwatch' className="w-9 h-9 rounded-md cursor-pointer flex items-center justify-center hover:bg-gray-200 transition">
+                  <GithubIcon
+                     className="w-4.5 sm:w-5 md:w-5.5 text-primary"
+                     onClick={() => {
+                        setIsSearchOpen(true);
+                     }}
+                  />
+               </a>
 
                {/* Mobile Menu Icon */}
                <div className="md:hidden ml-1">
@@ -83,10 +91,10 @@ export default function Navbar() {
                   "tracking-wide",
                   "text-lg font-semibold"
                )}>
-                  <Link href={'/about'} onClick={() => { setShowMenuDropdown(false) }} className="uppercase group font-heading bg-gray-100 active:bg-gray-200 transition p-2.5 pb-2 rounded-xl">
+                  {/* <Link href={'/about'} onClick={() => { setShowMenuDropdown(false) }} className="uppercase group font-heading bg-gray-100 active:bg-gray-200 transition p-2.5 pb-2 rounded-xl">
                      About
                      <div className='h-1 w-8 group-active:w-full border-t-2 transition-[width] duration-200 mt-1' />
-                  </Link>
+                  </Link> */}
                </div>
             </div>
          </Transition>
