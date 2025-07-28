@@ -13,6 +13,7 @@ export default async function Home() {
     if (user?.neighborhood_id) {
       const neighborhood = await fetchNeighborhoodById(user.neighborhood_id);
       const issues = await fetchIssuesByNeighborhood(user.neighborhood_id);
+
       if (!neighborhood || issues === null) {
         return <DiscoverNeighborhoodsFeed isLoggedIn={isLoggedIn} />
       }

@@ -2,7 +2,7 @@ import React from 'react'
 import { IssueType } from '@/app/lib/types'
 import IssuePostCard from '@/app/(site)/issue-post-card'
 
-export default function IssuesFeed({ issues, neighborhoodName }: { issues: IssueType[] | null, neighborhoodName: string }) {
+export default function IssuesFeed({ issues, neighborhoodName }: { issues: (IssueType & { upvoteCount: number })[] | null, neighborhoodName: string }) {
    return (
       <div>
          <h3 className='text-xl font-semibold mb-4'>

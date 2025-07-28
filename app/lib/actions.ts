@@ -7,8 +7,9 @@ import { IssueCreate, UpdateProfileSchema, UserCreate } from "./schema";
 import { sql } from "./db";
 import { findUserByEmail } from "./data";
 import bcrypt from "bcryptjs";
+import { revalidatePath } from "next/cache";
 
-/* DB Interactions ────────────── */
+/* CRUD Interactions ──────────── */
 
 export async function createIssue(formData: FormData): Promise<{ ok: boolean, message: string, fieldErrors?: any }> {
    const session = await auth();
@@ -147,6 +148,46 @@ export async function createAccount(
 
 
 /* Other actions ──────────────── */
+export async function handleUpvoteIssue(issue_id: string): Promise<{ ok: false, message: string } | { ok: true, action: 'upvoted' | 'removed_upvote' }> {
+   const session = await auth();
+   if (!session || !session.user) return redirect('/login');
+
+   const user = await findUserByEmail(session.user?.email)
+   if (user === null) {
+      return { ok: false, message: "Failed to upvote" }
+   }
+
+   try {
+      const already = await sql`
+         SELECT "issue_id", "user_id" FROM issue_upvotes WHERE "user_id" = ${user.id} AND "issue_id" = ${issue_id};
+      `;
+
+      if (already.length > 1) {
+         return { ok: false, message: "Failed to upvote" }
+      }
+      if (already.length === 1) {
+         await sql`
+            DELETE FROM issue_upvotes
+            WHERE "user_id" = ${user.id} AND "issue_id" = ${issue_id};
+         `;
+
+         revalidatePath("/issues")
+         revalidatePath(`/issues/${issue_id}`)
+         return { ok: true, action: 'removed_upvote' }
+      }
+      await sql`
+         INSERT INTO issue_upvotes("user_id", "issue_id")
+         VALUES(${user.id}, ${issue_id})
+      `;
+
+      revalidatePath("/issues")
+      revalidatePath(`/issues/${issue_id}`)
+      return { ok: true, action: 'upvoted' }
+   } catch (error) {
+      console.log(error);
+      return { ok: false, message: "Failed to upvote. Server error." }
+   }
+}
 
 export async function authenticate(
    _prevState: { error: string, formData: { email: string, password: string } } | undefined,
